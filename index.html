@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product App</title>
+  </head>
+  <body onload="init()">
+    <!-- BARRA DE NAVEGACIÓN  -->
+
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        background: #1976d2;
+        color: #fff;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      nav a {
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      nav form {
+        display: flex;
+        gap: 0.5rem;
+      }
+      nav input[type="search"] {
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        border: none;
+        font-size: 1rem;
+      }
+      nav button {
+        background: #fff;
+        color: #1976d2;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      nav button:hover {
+        background: #e3eafc;
+      }
+      .container {
+        max-width: 900px;
+        margin: 2rem auto;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+        padding: 2rem;
+      }
+      form#task-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      form#task-form input,
+      form#task-form textarea {
+        padding: 0.7rem 1rem;
+        border-radius: 4px;
+        border: 1px solid #cfd8dc;
+        font-size: 1rem;
+      }
+      form#task-form button {
+        align-self: flex-start;
+        background: #1976d2;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 0.6rem 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      form#task-form button:hover {
+        background: #1565c0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        background: #fafbfc;
+      }
+      th,
+      td {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: left;
+      }
+      thead td {
+        font-weight: bold;
+        background: #e3eafc;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+    </style>
+
+    <nav>
+      <a href="#">Product App</a>
+      <form
+        onsubmit="event.preventDefault(); return false;"
+        style="display: flex; gap: 0.5rem"
+      >
+        <input
+          name="searchId"
+          id="searchId"
+          type="search"
+          placeholder="Buscar por ID"
+          style="width: 120px"
+        />
+        <button type="button" onclick="buscarPorId()">Buscar ID</button>
+        <input
+          name="searchText"
+          id="searchText"
+          type="search"
+          placeholder="Buscar por nombre, marca o detalles"
+          style="width: 260px"
+        />
+        <button type="button" onclick="buscarProducto()">Buscar texto</button>
+      </form>
+    </nav>
+
+    <div class="container">
+      <!-- FORMULARIO PARA AGREGAR PRODUCTO -->
+      <form id="task-form">
+        <input type="text" id="name" placeholder="Nombre de producto" />
+        <textarea
+          id="description"
+          cols="30"
+          rows="5"
+          placeholder="JSON de producto"
+        ></textarea>
+        <input type="hidden" id="taskId" />
+        <button type="submit" onclick="agregarProducto(event)">
+          Agregar Producto
+        </button>
+      </form>
+
+      <!-- TABLA  -->
+      <table>
+        <thead>
+          <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Descripcion</td>
+          </tr>
+        </thead>
+        <tbody id="productos"></tbody>
+      </table>
+    </div>
+
+    <!-- Lógica del Frontend -->
+    <script src="./app.js"></script>
+  </body>
+</html>
