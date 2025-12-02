@@ -1,0 +1,15 @@
+{
+    "name": "tecweb/product_app",
+    "description": "Aplicación de gestión de productos con PSR-4",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "slim/slim": "4.14.0",
+        "slim/psr7": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "TECWEB\\MYAPI\\": "backend/myapi/"
+        }
+    }
+}
